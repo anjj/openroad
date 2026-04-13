@@ -1,6 +1,8 @@
 <div align="center">
 
-# openRoad
+<img src="./docs/assets/openroad-logo.png" width="600" alt="openRoad Logo" />
+
+<h1 style="color: #00ACED; margin-top: -4rem">openRoad</h1>
 
 > Minimalist roadmap visualizer for GitHub Organizations.
 
@@ -27,5 +29,9 @@ openRoad provides a high-level, interactive roadmap view of your GitHub projects
 ---
 
 <div align="center">
-Developed by Golive. Licensed under the MIT License.
+  <a href="https://golive.com">
+    <img src="https://raw.githubusercontent.com/Golive-Global/brand-assets/main/logos/golive-logo-red.svg" height="24" alt="Golive Logo" />
+  </a>
+  <br />
+  Developed by Golive. Licensed under the MIT License.
 </div>
