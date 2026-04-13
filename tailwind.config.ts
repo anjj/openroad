@@ -14,8 +14,8 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ["var(--font-inter)"],
-        montserrat: ["var(--font-montserrat)"],
+        sans: ["var(--font-titillium)", "ui-sans-serif", "system-ui"],
+        titillium: ["var(--font-titillium)"],
       },
     },
   },

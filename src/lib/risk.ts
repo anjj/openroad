@@ -1,4 +1,4 @@
-export type RiskStatus = 'green' | 'yellow' | 'red';
+export type RiskStatus = 'green' | 'yellow' | 'red' | 'blue' | 'gray';
 
 export interface MilestoneData {
   title: string;
@@ -6,28 +6,27 @@ export interface MilestoneData {
   open_issues: number;
   created_at: string;
   due_on: string | null;
+  state: string;
 }
 
-export function calculateRisk(milestone: MilestoneData): RiskStatus {
-  if (!milestone.due_on) return 'green';
+/**
+ * Simplified Risk Logic:
+ * - CLOSED: Blue
+ * - OPEN + Overdue: Red
+ * - OPEN + Current (closest future): Green (calculated outside)
+ * - OPEN + Future: Gray (calculated outside)
+ */
+export function calculateRisk(milestone: MilestoneData, isCurrent: boolean = false): RiskStatus {
+  if (milestone.state === 'closed') return 'blue';
   
-  const total = milestone.open_issues + milestone.closed_issues;
-  if (total === 0) return 'green';
+  if (!milestone.due_on) return 'gray';
   
-  const progress = milestone.closed_issues / total;
-  const start = new Date(milestone.created_at).getTime();
   const end = new Date(milestone.due_on).getTime();
   const now = new Date().getTime();
   
-  if (now > end && milestone.open_issues > 0) return 'red';
+  // Overdue
+  if (now > end) return 'red';
   
-  const totalDuration = end - start;
-  const elapsedDuration = now - start;
-  const timeProgress = Math.min(1, Math.max(0, elapsedDuration / totalDuration));
-  
-  const healthIndex = progress - timeProgress;
-  
-  if (healthIndex >= 0) return 'green';
-  if (healthIndex > -0.2) return 'yellow';
-  return 'red';
+  // Current vs Future
+  return isCurrent ? 'green' : 'gray';
 }

@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
-import { Inter, Montserrat } from "next/font/google";
+import { Titillium_Web } from "next/font/google";
 import "./globals.css";
+import { AuthProvider } from "@/components/AuthProvider";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const montserrat = Montserrat({ subsets: ["latin"], variable: "--font-montserrat" });
+const titillium = Titillium_Web({ 
+  subsets: ["latin"], 
+  weight: ["200", "300", "400", "600", "700", "900"],
+  variable: "--font-titillium" 
+});
 
 export const metadata: Metadata = {
   title: "openRoad",
@@ -17,8 +21,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${montserrat.variable} font-sans`}>
-        {children}
+      <body className={`${titillium.variable} font-sans antialiased`}>
+        <AuthProvider>
+          {children}
+        </AuthProvider>
       </body>
     </html>
   );
