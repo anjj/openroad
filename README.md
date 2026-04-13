@@ -33,5 +33,5 @@ openRoad provides a high-level, interactive roadmap view of your GitHub projects
     <img src="https://raw.githubusercontent.com/Golive-Global/brand-assets/main/logos/golive-logo-red.svg" height="24" alt="Golive Logo" />
   </a>
   <br />
-  Developed by Golive. Licensed under the MIT License.
+  Developed by Andres Julian. Licensed under the MIT License.
 </div>
